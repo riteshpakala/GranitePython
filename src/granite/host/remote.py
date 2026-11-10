@@ -17,6 +17,7 @@ class RemoteError(Exception):
                  path: str | None = None) -> None:
         self.kind, self.word, self.message, self.refusal = kind, word or "", message, refusal
         self.status, self.log, self.reason, self.path = status, log, reason, path
+        self.cost = None  # what the call cost, once its runner started
         super().__init__(self.text)
 
     @property
