@@ -1,0 +1,12 @@
+[project]
+name = "granite-conformance"
+version = "0.1.0"
+description = "The parrot in Python: GraniteRust's conformance agent, line for line."
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.granite]
+name = "parrot-python"
+agent = "granite_conformance:roster"
+granite = "0.1.0"
+source = "src"

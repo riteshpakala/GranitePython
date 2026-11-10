@@ -216,8 +216,16 @@ class _Unfit(Exception):
 
 # --- serde's sentences ----------------------------------------------------------------------------------------------
 
+def float_display(value: float, point: bool = False) -> str:
+    """A double as Rust's ``{}`` writes it, which never uses an exponent (``5``, ``0.25``); with ``point``, serde's
+    decimal point on a whole number too (``5.0``), as its ``Unexpected::Float`` says one."""
+    said = _float_display(value)
+    if not point and said.endswith(".0"):
+        return said[:-2]
+    return said
+
+
 def _float_display(value: float) -> str:
-    """A double as Rust's Display writes it, which never uses an exponent, with serde's decimal point."""
     if math.isnan(value):
         return "NaN"
     if math.isinf(value):

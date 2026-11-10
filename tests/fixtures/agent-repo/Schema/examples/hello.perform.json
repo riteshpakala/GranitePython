@@ -1,0 +1,4 @@
+{
+  "expect": {"exit": 0},
+  "perform": {"input": {"notes": 1, "text": "hello from the container check"}, "model": false, "word": "parrot"}
+}

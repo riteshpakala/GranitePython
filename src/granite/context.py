@@ -19,7 +19,7 @@ from typing import Any, Callable
 from granite import schema
 from granite.core import locked
 from granite.core.emitter import Emitter
-from granite.error import host_no_answer, host_no_model
+from granite.error import host_bad_answer, host_no_answer, host_no_model
 
 
 class CancelFlag:
@@ -135,6 +135,16 @@ class Context:
         model = self._model()
         locked.check("asked the host's model")
         return model.object(schema, system or "", user or "", max_tokens, seconds, self.cancel)
+
+    def ask_as(self, kind: type, system: str, user: str, max_tokens: int = 3000, seconds: float = 300) -> Any:
+        """Asks the host's model for a ``kind`` (a dataclass): its JSON Schema read off the class, the answer decoded
+        as an input is. An answer that does not decode is a model refusal saying why (Rust's ``object_as``)."""
+        shape = schema.of(kind)
+        answer = self.ask_object(shape.json_schema(), system, user, max_tokens, seconds)
+        try:
+            return shape.decode(answer)
+        except ValueError as error:
+            raise host_bad_answer(str(error)) from None
 
     def ask_text(self, system: str, user: str, max_tokens: int = 3000, seconds: float = 300) -> str:
         """Asks the host's model for text."""
