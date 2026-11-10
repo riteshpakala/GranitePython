@@ -198,10 +198,11 @@ def check(agent: str, mode: str, granite: str, out: str, scratch: str) -> int:
             if answer.get("format") != "granite-answer/1" or type(answer.get("agent", {}).get("word")) is not str:
                 failed(f"{label}: not stamped")
             for path in answer.get("paths", []):
-                if mode == "container":
-                    path = scratch + path[len("/scratch"):] if path.startswith("/scratch") else path
-                elif not path.startswith("/"):
+                # A relative path is the call's folder's; an absolute one in a container is under /scratch.
+                if not path.startswith("/"):
                     path = os.path.join(work, path)
+                elif mode == "container" and path.startswith("/scratch"):
+                    path = scratch + path[len("/scratch"):]
                 if not os.path.exists(path):
                     failed(f"{label}: {path} is named in paths and is not there")
             if any(m["kind"] not in makes for m in answer.get("made", [])):
