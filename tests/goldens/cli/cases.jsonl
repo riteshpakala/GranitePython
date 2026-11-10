@@ -1,0 +1,30 @@
+{"args": [], "stdin": ""}
+{"args": ["frobnicate"], "stdin": ""}
+{"args": ["agents", "list", "--shelf"], "stdin": ""}
+{"args": ["agents", "list"], "stdin": ""}
+{"args": ["agents", "list", "--shelf", "{SHELF}"], "stdin": ""}
+{"args": ["agents", "list", "--json", "--shelf", "{SHELF}"], "stdin": ""}
+{"args": ["agents", "--shelf", "{SHELF}"], "stdin": ""}
+{"args": ["agents", "rm", "nobody", "--shelf", "{SHELF}"], "stdin": ""}
+{"args": ["agents", "update", "nobody", "--shelf", "{SHELF}"], "stdin": ""}
+{"args": ["describe", "{PARROT}"], "stdin": ""}
+{"args": ["describe", "/nowhere/runner"], "stdin": ""}
+{"args": ["run", "{PARROT}", "-"], "stdin": "{\"perform\": {\"word\": \"parrot\", \"input\": {\"text\": \"hi\", \"notes\": 2}, \"ask\": \"say\", \"directory\": \"/tmp\"}}"}
+{"args": ["run", "{PARROT}", "-", "--word", "parrot", "--ask", "speak"], "stdin": "{\"input\": {\"text\": \"x\"}}"}
+{"args": ["run", "{PARROT}", "-"], "stdin": "{\"word\": \"parrot\", \"input\": {\"text\": \"x\", \"fail\": true}}"}
+{"args": ["run", "{PARROT}", "-"], "stdin": "{\"word\": \"parrot\", \"input\": {\"text\": \"x\", \"fault\": true}}"}
+{"args": ["run", "{PARROT}", "-"], "stdin": "{\"word\": \"parrot\", \"input\": {\"text\": \"x\", \"crash\": true}}"}
+{"args": ["run", "{PARROT}", "-"], "stdin": "{\"word\": \"parrot\", \"input\": {\"text\": \"x\", \"askModel\": true}}"}
+{"args": ["run", "{PARROT}", "-"], "stdin": "{\"word\": \"parrot\", \"input\": {}}"}
+{"args": ["run", "{PARROT}", "-"], "stdin": "{\"word\": \"parrot\"}"}
+{"args": ["run", "{PARROT}", "-", "--word", "comic"], "stdin": "{}"}
+{"args": ["run", "{PARROT}", "-"], "stdin": "{\"input\": {}}"}
+{"args": ["run", "{PARROT}", "nope.json"], "stdin": ""}
+{"args": ["run", "{PARROT}", "-"], "stdin": "x"}
+{"args": ["run", "/nowhere/runner", "-"], "stdin": "{\"word\": \"parrot\", \"input\": {\"text\": \"x\"}}"}
+{"args": ["check", "--schemas", "{SCHEMA}", "--schema", "granite-agent-entry.schema.json", "-"], "stdin": "{\"fields\": {\"text\": \"what to say\"}, \"kind\": \"package\", \"lanes\": 2, \"module\": \"M\", \"schema\": {\"object\": [{\"name\": \"text\", \"required\": true, \"schema\": \"string\"}]}, \"summary\": \"says it back.\", \"type\": \"M.T\", \"word\": \"parrot\"}"}
+{"args": ["check", "--schemas", "{SCHEMA}", "--schema", "granite-agent-entry.schema.json", "-"], "stdin": "{\"fields\": {\"text\": \"what to say\"}, \"kind\": \"package\", \"lanes\": 0, \"module\": \"M\", \"schema\": {\"object\": [{\"name\": \"text\", \"required\": true, \"schema\": \"string\"}]}, \"summary\": \"says it back.\", \"type\": \"M.T\", \"word\": \"Not A Word\"}"}
+{"args": ["check", "--schemas", "{SCHEMA}", "-"], "stdin": "{}"}
+{"args": ["check", "--schemas", "{SCHEMA}", "--schema", "nope.json", "-"], "stdin": "{}"}
+{"args": ["check", "--schemas", "{SCHEMA}", "--schema", "granite-agent-entry.schema.json", "-"], "stdin": "[1,"}
+{"args": ["check", "--schemas", "/nowhere/schemas", "--schema", "x", "-"], "stdin": "{}"}

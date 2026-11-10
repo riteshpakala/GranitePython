@@ -1,0 +1,59 @@
+{"code": 0, "stderr": "valid: instance.json against granite-agent-wire.schema.json\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-wire.schema.json\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-wire.schema.json\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-wire.schema.json\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-wire.schema.json\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-wire.schema.json\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-wire.schema.json\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-wire.schema.json\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-wire.schema.json\n"}
+{"code": 1, "stderr": "{\"hello\":{\"wire\":\"granite-agent/x\"}} is not valid under any of the schemas listed in the 'oneOf' keyword at \ngranite: instance.json does not keep granite-agent-wire.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "{\"hello\":{\"pid\":\"7\",\"wire\":1}} is not valid under any of the schemas listed in the 'oneOf' keyword at \ngranite: instance.json does not keep granite-agent-wire.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "{\"perform\":{\"word\":\"x\"}} is not valid under any of the schemas listed in the 'oneOf' keyword at \ngranite: instance.json does not keep granite-agent-wire.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "{\"model\":{\"id\":1.5,\"kind\":\"image\",\"maxTokens\":3,\"seconds\":\"2\",\"system\":\"s\",\"user\":\"u\"}} is not valid under any of the schemas listed in the 'oneOf' keyword at \ngranite: instance.json does not keep granite-agent-wire.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "{\"failed\":\"x\",\"refused\":{\"kind\":\"weather\",\"reasons\":[1]}} is not valid under any of the schemas listed in the 'oneOf' keyword at \ngranite: instance.json does not keep granite-agent-wire.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "{\"cancel\":{},\"failed\":\"x\"} is valid under more than one of the schemas listed in the 'oneOf' keyword at \ngranite: instance.json does not keep granite-agent-wire.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "{\"weather\":{}} is not valid under any of the schemas listed in the 'oneOf' keyword at \ngranite: instance.json does not keep granite-agent-wire.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "{} is not valid under any of the schemas listed in the 'oneOf' keyword at \ngranite: instance.json does not keep granite-agent-wire.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "[] is not valid under any of the schemas listed in the 'oneOf' keyword at \ngranite: instance.json does not keep granite-agent-wire.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "\"hello\" is not valid under any of the schemas listed in the 'oneOf' keyword at \ngranite: instance.json does not keep granite-agent-wire.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "{\"output\":[1]} is not valid under any of the schemas listed in the 'oneOf' keyword at \ngranite: instance.json does not keep granite-agent-wire.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "{\"entries\":[{\"word\":\"x\"}]} is not valid under any of the schemas listed in the 'oneOf' keyword at \ngranite: instance.json does not keep granite-agent-wire.schema.json: 1 problems\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-entry.schema.json\n"}
+{"code": 1, "stderr": "\"word\" is a required property at \ngranite: instance.json does not keep granite-agent-entry.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "\"Not A Word\" does not match \"^[a-z][a-z0-9-]*$\" at /word\ngranite: instance.json does not keep granite-agent-entry.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "0 is less than the minimum of 1 at /lanes\ngranite: instance.json does not keep granite-agent-entry.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "\"robot\" is not one of [\"package\",\"worker\"] at /kind\ngranite: instance.json does not keep granite-agent-entry.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "{\"object\":[{\"name\":\"x\",\"required\":true,\"schema\":\"strings\"}]} is not valid under any of the schemas listed in the 'oneOf' keyword at /schema\ngranite: instance.json does not keep granite-agent-entry.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "{\"choice\":\"calm\"} is not valid under any of the schemas listed in the 'oneOf' keyword at /schema\ngranite: instance.json does not keep granite-agent-entry.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "\"what\" is a required property at /makes/0\n\"into\" is a required property at /makes/0\ngranite: instance.json does not keep granite-agent-entry.schema.json: 2 problems\n"}
+{"code": 1, "stderr": "5 is not of type \"string\" at /fields/text\ngranite: instance.json does not keep granite-agent-entry.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "\"summary\" is a required property at \ngranite: instance.json does not keep granite-agent-entry.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "7 is not valid under any of the schemas listed in the 'oneOf' keyword at /schema\ngranite: instance.json does not keep granite-agent-entry.schema.json: 1 problems\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-answer.schema.json\n"}
+{"code": 0, "stderr": "valid: instance.json against https://github.com/riteshpakala/Granite/blob/main/Schema/granite-agent-answer.schema.json\n"}
+{"code": 1, "stderr": "\"paths\" is a required property at \ngranite: instance.json does not keep granite-agent-answer.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "\"granite-answer/1\" was expected at /format\ngranite: instance.json does not keep granite-agent-answer.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "\"torn\" is not one of [\"written\",\"rewritten\",\"unchanged\",\"removed\"] at /made/0/state\ngranite: instance.json does not keep granite-agent-answer.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "\"word\" is a required property at /agent\ngranite: instance.json does not keep granite-agent-answer.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "1 is not of type \"string\" at /paths/0\ngranite: instance.json does not keep granite-agent-answer.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "5 is not of types \"null\", \"string\" at /path\ngranite: instance.json does not keep granite-agent-answer.schema.json: 1 problems\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-answer.schema.json\n"}
+{"code": 1, "stderr": "\"schema\" is a required property at /payloads/0\ngranite: instance.json does not keep granite-agent-answer.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "\"one\" is not of type \"array\" at /notes\ngranite: instance.json does not keep granite-agent-answer.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "3 is not of type \"string\" at /expected/0/kind\n\"name\" is a required property at /expected/0\ngranite: instance.json does not keep granite-agent-answer.schema.json: 2 problems\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-installation.schema.json\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-installation.schema.json\n"}
+{"code": 1, "stderr": "\"sha256\" is a required property at \ngranite: instance.json does not keep granite-agent-installation.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "\"XYZ\" does not match \"^[0-9a-f]{64}$\" at /sha256\ngranite: instance.json does not keep granite-agent-installation.schema.json: 1 problems\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-installation.schema.json\n"}
+{"code": 1, "stderr": "\"granite-agent-installation/1\" was expected at /format\ngranite: instance.json does not keep granite-agent-installation.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "{\"neither\":1} is not valid under any of the schemas listed in the 'oneOf' keyword at /source\ngranite: instance.json does not keep granite-agent-installation.schema.json: 1 problems\n"}
+{"code": 1, "stderr": "\"word\" is a required property at /entries/0\n\"summary\" is a required property at /entries/0\n\"module\" is a required property at /entries/0\n\"type\" is a required property at /entries/0\ngranite: instance.json does not keep granite-agent-installation.schema.json: 4 problems\n"}
+{"code": 1, "stderr": "5 is not of type \"string\" at /builtAt\ngranite: instance.json does not keep granite-agent-installation.schema.json: 1 problems\n"}
+{"code": 0, "stderr": "valid: instance.json against granite-agent-installation.schema.json\n"}
+{"code": 1, "stderr": "\"now\" is not of type \"number\" at /modified\ngranite: instance.json does not keep granite-agent-installation.schema.json: 1 problems\n"}
+{"code": 0, "stderr": "valid: instance.json against craft-agent/1/output\n"}
+{"code": 1, "stderr": "\"schema\" is a required property at /payloads/0\n\"schema\" is a required property at /payloads/0\ngranite: instance.json does not keep craft-agent/1/output: 2 problems\n"}
+{"code": 1, "stderr": "\"format\" is a required property at \ngranite: instance.json does not keep craft-agent/1/output: 1 problems\n"}
+{"code": 1, "stderr": "1 is not of type \"string\" at /payloads/0/path\n1 is not of type \"string\" at /payloads/0/path\ngranite: instance.json does not keep craft-agent/1/output: 2 problems\n"}
