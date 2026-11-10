@@ -52,8 +52,8 @@ class Refusal(GraniteError):
         listed = list(reasons) if reasons is not None else []
         if reason is not None:
             listed.insert(0, reason)
-        if not listed:
-            raise ValueError("granite: a refusal says at least one reason")
+        if not listed and said is None:
+            raise ValueError("granite: a refusal says at least one reason, or its own sentence")
         super().__init__(said if said is not None else refusal_text(listed))
         self.kind = kind
         self.reasons = listed
