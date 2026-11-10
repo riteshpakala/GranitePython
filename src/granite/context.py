@@ -16,6 +16,7 @@ from __future__ import annotations
 import threading
 from typing import Any, Callable
 
+from granite import schema
 from granite.core import locked
 from granite.core.emitter import Emitter
 from granite.error import host_no_answer, host_no_model
@@ -106,9 +107,11 @@ class Context:
         self._sink = sink
 
     def deliver(self, event: Any) -> None:
-        """Delivers ``event`` into this run's stream. Safe from any thread. An event must be JSON once written."""
+        """Delivers ``event`` into this run's stream: a copy, as plain JSON (a dataclass by its wire names). Safe from
+        any thread. Raises ``TypeError`` for something that is not JSON."""
+        copied = schema.encode(event)
         if self._sink is not None:
-            self._sink(event)
+            self._sink(copied)
 
     def note(self, line: str) -> None:
         """A line of progress, through the host."""

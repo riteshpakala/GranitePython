@@ -35,11 +35,18 @@ class Make:
 
 class Answer(dict):
     """An answer being built: a dict with ``path`` (None), ``paths``, ``made``, ``expected``, ``problems`` and
-    ``payloads`` (each ``[]``) to start; the package's own keys sit beside them."""
+    ``payloads`` (each ``[]``) to start; the package's own keys sit beside them, given as keywords, a dict, or a
+    dataclass (by its wire names, as Rust's ``Answer { own, .. }`` flattens its own)."""
 
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
+    def __init__(self, own: Any = None, **kwargs: Any) -> None:
         super().__init__(path=None, paths=[], made=[], expected=[], problems=[], payloads=[])
-        self.update(*args, **kwargs)
+        if own is not None:
+            from granite import schema
+            encoded = schema.encode(own)
+            if type(encoded) is not dict:
+                raise TypeError("granite: an answer's own keys are a dict or a dataclass")
+            self.update(encoded)
+        self.update(kwargs)
 
     def _list(self, key: str) -> list:
         items = self.get(key)

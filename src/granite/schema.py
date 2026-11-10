@@ -300,6 +300,40 @@ def unknown_variant(got: str, choices: typing.Sequence[str]) -> str:
     return said + "expected one of " + ", ".join(f"`{c}`" for c in choices)
 
 
+# --- writing a value ------------------------------------------------------------------------------------------------
+
+def encode(value: Any) -> Any:
+    """``value`` as plain JSON values, copied: a dataclass by its fields' wire names (None as null, as serde writes
+    an Option), a tuple as a list. Raises ``TypeError`` for anything that is not JSON."""
+    if value is None:
+        return None
+    if isinstance(value, bool):
+        return bool(value)
+    if isinstance(value, int):
+        return int(value)
+    if isinstance(value, float):
+        return float(value)
+    if isinstance(value, str):
+        return "".join((value,))
+    if isinstance(value, dict):
+        out = {}
+        for key, member in value.items():
+            if not isinstance(key, str):
+                raise TypeError(f"granite: a JSON object's key is a string, not a {type(key).__name__}")
+            out["".join((key,))] = encode(member)
+        return out
+    if isinstance(value, (list, tuple)):
+        return [encode(member) for member in value]
+    if dataclasses.is_dataclass(value) and not isinstance(value, type):
+        out = {}
+        for f in dataclasses.fields(value):
+            meta = f.metadata.get("granite", {})
+            out[meta.get("name") or camel(f.name)] = encode(getattr(value, f.name))
+        return out
+    raise TypeError(f"granite: a {type(value).__name__} is not JSON: deliver dicts, lists, strings, numbers, "
+                    "booleans, None or dataclasses")
+
+
 # --- reading a dataclass --------------------------------------------------------------------------------------------
 
 _made: dict[Any, Schema] = {}
