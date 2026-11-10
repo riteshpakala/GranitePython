@@ -41,5 +41,9 @@ Run (2026-11-10, Apple container 1.6.1 on macOS 27, arm64):
 - `containers/check.sh tests/fixtures/agent-repo`, in the container and `--native`: the parrot installed, its record
   and entry valid, one answer and two refusals as declared.
 - `scripts/interop.sh` (natively): Rust's, C's and Python's hosts and runners, nine ways, the same bytes.
+- `containers/check.sh https://github.com/rao-craft/BlackjackAgent.git`, in the container: the first Python agent,
+  fetched from its public repository, installed and called five times, its picture written and checked. Its first run
+  found that a relative path in an answer's `paths` was not resolved against the call's folder in a container
+  (aaa2a8c fixed it).
 
 Not run: Craft itself, and x86_64 Linux.

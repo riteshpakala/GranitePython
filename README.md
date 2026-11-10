@@ -39,6 +39,9 @@ granite agents add ./echo-agent --shelf ~/agents        # one file: the runner, 
 echo '{"word":"echo","input":{"text":"hi"}}' | granite run ~/agents/EchoAgent/agent -
 ```
 
+The first agent written on it is [BlackjackAgent](https://github.com/rao-craft/BlackjackAgent): blackjack a move at
+a time for Craft, the table drawn as text for the chat and as a PNG for Canvas.
+
 - [Docs/Agents.md](Docs/Agents.md): writing an agent: the package, its input read off a dataclass, the run, the
   answer, asking the host's model, refusing, and the repository.
 - [Docs/Hosting.md](Docs/Hosting.md): the `granite` command, a call, the runner, the shelf, the installer.
