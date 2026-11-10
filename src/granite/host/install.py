@@ -255,10 +255,17 @@ def bundle(package: str, manifest: Manifest, work: str) -> bytes:
     for name, data in _granite_files() + _source_files(os.path.join(package, manifest.source)):
         entries.setdefault(name, data)  # GranitePython's own come first: an agent cannot replace them
     entries["__main__.py"] = _main(manifest.name, manifest)
+    return zipapp(entries, b"#!" + os.fsencode(interpreter()) + b" -I\n", work)
+
+
+def zipapp(entries: dict[str, bytes], first_line: bytes, work: str) -> bytes:
+    """``first_line`` then a zip of ``entries``, a ``.pyc`` beside each ``.py``: sorted, dated once, stored, so the same
+    entries give the same bytes. Raises ``py_compile.PyCompileError``."""
+    entries = dict(entries)
     for name in [n for n in entries if n.endswith(".py")]:
         entries[name[:-3] + ".pyc"] = _compiled(name, entries[name], work)
     out = io.BytesIO()
-    out.write(b"#!" + os.fsencode(interpreter()) + b" -I\n")
+    out.write(first_line)
     with zipfile.ZipFile(out, "w", zipfile.ZIP_STORED) as archive:
         for name in sorted(entries):
             info = zipfile.ZipInfo(name, _DATE)

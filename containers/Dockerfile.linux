@@ -1,0 +1,11 @@
+# syntax=docker/dockerfile:1
+# GranitePython's own suite on Linux (arm64 under Apple's container): scripts/conformance-linux.sh. Python 3.12 (the
+# image's) and Debian's 3.11, glibc's posix_spawn by ctypes, /proc's descriptors and wait4's kilobytes are what it
+# proves.
+FROM docker.io/library/python:3.12-slim-bookworm
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends python3 git ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+WORKDIR /src/GranitePython
+COPY . .
+CMD ["scripts/check.sh"]
