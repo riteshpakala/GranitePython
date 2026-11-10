@@ -2,4 +2,4 @@
 # GranitePython against GraniteRust and GraniteC, natively (scripts/interop.py says what is compared).
 #   scripts/interop.sh <GraniteRust checkout> <GraniteC checkout> [--quick]
 set -eu
-exec "${GRANITE_PYTHON:-python3}" "$(dirname "$0")/interop.py" "$@"
+exec "${PYTHON:-python3}" "$(dirname "$0")/interop.py" "$@"

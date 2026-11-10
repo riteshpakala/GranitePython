@@ -9,5 +9,5 @@
 # What it checks is containers/check.py's to say.
 set -eu
 here=$(cd "$(dirname "$0")" && pwd)
-python=${GRANITE_PYTHON:-python3}
+python=${PYTHON:-python3}
 exec "$python" "$here/check.py" "$@"
